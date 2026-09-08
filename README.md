@@ -123,6 +123,7 @@ src/
   dql-builder.ts    pure DQL string helpers
   tools/            one module per tool
 skills/             ten SKILL.md files loaded via the manifest's "skills" field
+assets/icon.png     catalog icon (rendered from diffbot.com's favicon.svg)
 openclaw.plugin.json
 ```
 

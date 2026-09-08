@@ -42,6 +42,7 @@
   },
   "files": [
     "dist",
+    "assets",
     "skills",
     "openclaw.plugin.json",
     "README.md",
