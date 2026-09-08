@@ -143,9 +143,11 @@ openclaw plugins inspect diffbot --runtime --json
 npm i -g clawhub
 clawhub login
 clawhub package validate .
-clawhub package publish . --dry-run --source-repo diffbot/diffbot-openclaw --source-commit <sha>
-clawhub package publish . --source-repo diffbot/diffbot-openclaw --source-commit <sha>
+clawhub package publish . --dry-run --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Web Fetch,Knowledge Graph,Crawling,Entity Resolution" --categories web
+clawhub package publish . --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Web Fetch,Knowledge Graph,Crawling,Entity Resolution" --categories web
 ```
+
+`--topics` and `--categories` are publish-time-only metadata: ClawHub does not derive them from npm `keywords` or the plugin manifest, and there is no way to set them after publishing. They drive `openclaw plugins search` ranking (a `Web Search` topic lifts the score above the top-20 display cutoff for queries like `openclaw plugins search "web search"`).
 
 The package name is scoped to the ClawHub owner (`@diffbot/openclaw-plugin`), as ClawHub requires. New releases stay hidden from install surfaces until ClawHub's automated security checks and review finish. After the first manual publish, `clawhub package trusted-publisher set @diffbot/openclaw-plugin --repository diffbot/diffbot-openclaw --workflow-filename clawhub-publish.yml` lets the `.github/workflows/clawhub-publish.yml` workflow publish from GitHub Actions without a stored token.
 
