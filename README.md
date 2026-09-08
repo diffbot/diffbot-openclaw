@@ -143,8 +143,8 @@ openclaw plugins inspect diffbot --runtime --json
 npm i -g clawhub
 clawhub login
 clawhub package validate .
-clawhub package publish . --dry-run --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Web Fetch,Knowledge Graph,Crawling,Entity Resolution" --categories web
-clawhub package publish . --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Web Fetch,Knowledge Graph,Crawling,Entity Resolution" --categories web
+clawhub package publish . --dry-run --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Knowledge Graph,Crawling,Entity Resolution" --categories web
+clawhub package publish . --source-repo diffbot/diffbot-openclaw --source-commit <sha> --topics "Web Search,Web Extraction,Knowledge Graph,Crawling,Entity Resolution" --categories web
 ```
 
 `--topics` and `--categories` are publish-time-only metadata: ClawHub does not derive them from npm `keywords` or the plugin manifest, and there is no way to set them after publishing. They drive `openclaw plugins search` ranking (a `Web Search` topic lifts the score above the top-20 display cutoff for queries like `openclaw plugins search "web search"`).
