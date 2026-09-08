@@ -1,5 +1,5 @@
 {
-  "name": "openclaw-plugin-diffbot",
+  "name": "@diffbot/openclaw-plugin",
   "version": "0.1.0",
   "description": "Diffbot tools and skills for OpenClaw: Knowledge Graph search (organizations, people, news, places, deals, DQL), web search, URL extraction, entity resolution, and site crawling.",
   "type": "module",
@@ -71,5 +71,8 @@
       "openclawVersion": "2026.9.3",
       "pluginSdkVersion": "2026.9.3"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

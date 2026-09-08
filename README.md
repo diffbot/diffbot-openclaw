@@ -9,7 +9,7 @@ It is the OpenClaw counterpart of [diffbot-skills](https://github.com/diffbot/di
 From ClawHub (once published):
 
 ```bash
-openclaw plugins install clawhub:diffbot/diffbot
+openclaw plugins install clawhub:@diffbot/openclaw-plugin
 ```
 
 From a local checkout:
@@ -126,13 +126,13 @@ skills/             ten SKILL.md files loaded via the manifest's "skills" field
 openclaw.plugin.json
 ```
 
-`openclaw plugins build` regenerates the `id`, `description`, `configSchema`, `activation`, and `contracts.tools` fields of the manifest from the entry; the hand-maintained `skills` and `uiHints` fields are preserved. Run it after adding or renaming a tool, or validation fails with a stale-manifest error.
+`openclaw plugins build` regenerates the `id`, `description`, `configSchema`, `activation`, and `contracts.tools` fields of the manifest from the entry; the hand-maintained `skills` field is preserved. Run it after adding or renaming a tool, or validation fails with a stale-manifest error.
 
 Packaged smoke test:
 
 ```bash
 npm pack
-openclaw plugins install npm-pack:./openclaw-plugin-diffbot-0.1.0.tgz --force --accept-capabilities
+openclaw plugins install npm-pack:./diffbot-openclaw-plugin-0.1.0.tgz --force --accept-capabilities
 openclaw plugins inspect diffbot --runtime --json
 ```
 
@@ -141,11 +141,12 @@ openclaw plugins inspect diffbot --runtime --json
 ```bash
 npm i -g clawhub
 clawhub login
-clawhub package publish . --dry-run
-clawhub package publish .
+clawhub package validate .
+clawhub package publish . --dry-run --source-repo diffbot/diffbot-openclaw --source-commit <sha>
+clawhub package publish . --source-repo diffbot/diffbot-openclaw --source-commit <sha>
 ```
 
-The `.github/workflows/clawhub-publish.yml` workflow publishes on demand from GitHub Actions.
+The package name is scoped to the ClawHub owner (`@diffbot/openclaw-plugin`), as ClawHub requires. New releases stay hidden from install surfaces until ClawHub's automated security checks and review finish. After the first manual publish, `clawhub package trusted-publisher set @diffbot/openclaw-plugin --repository diffbot/diffbot-openclaw --workflow-filename clawhub-publish.yml` lets the `.github/workflows/clawhub-publish.yml` workflow publish from GitHub Actions without a stored token.
 
 ## License
 

@@ -6,17 +6,6 @@
   "skills": [
     "./skills"
   ],
-  "uiHints": {
-    "apiToken": {
-      "label": "Diffbot API token",
-      "placeholder": "Paste your token from app.diffbot.com",
-      "sensitive": true
-    },
-    "timeoutSeconds": {
-      "label": "Request timeout (seconds)",
-      "placeholder": "120"
-    }
-  },
   "configSchema": {
     "type": "object",
     "properties": {
