@@ -2,7 +2,7 @@
   "id": "diffbot",
   "name": "Diffbot",
   "description": "Structured web knowledge for OpenClaw agents: query Diffbot's Knowledge Graph (organizations, people, news, places, deals, and any other entity type via DQL), search the web with ranked and cited results, extract any URL into markdown or JSON, resolve named entities in text, and crawl whole sites.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "skills": [
     "./skills"
   ],
