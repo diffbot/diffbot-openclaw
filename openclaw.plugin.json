@@ -1,0 +1,54 @@
+{
+  "id": "diffbot",
+  "name": "Diffbot",
+  "description": "Structured web knowledge for OpenClaw agents: query Diffbot's Knowledge Graph (organizations, people, news, places, deals, and any other entity type via DQL), search the web with ranked and cited results, extract any URL into markdown or JSON, resolve named entities in text, and crawl whole sites.",
+  "version": "0.1.0",
+  "skills": [
+    "./skills"
+  ],
+  "uiHints": {
+    "apiToken": {
+      "label": "Diffbot API token",
+      "placeholder": "Paste your token from app.diffbot.com",
+      "sensitive": true
+    },
+    "timeoutSeconds": {
+      "label": "Request timeout (seconds)",
+      "placeholder": "120"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiToken": {
+        "type": "string",
+        "description": "Diffbot API token. When omitted the plugin reads DIFFBOT_API_TOKEN or DIFFBOT_TOKEN from the environment, then a DIFFBOT_API_TOKEN=... line in ~/.diffbot/credentials. Get a free token at https://app.diffbot.com/get-started"
+      },
+      "timeoutSeconds": {
+        "type": "number",
+        "description": "Per-request timeout in seconds. Defaults to 120.",
+        "minimum": 1
+      }
+    },
+    "additionalProperties": false
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "diffbot_search_web",
+      "diffbot_extract",
+      "diffbot_crawl",
+      "diffbot_resolve_entities",
+      "diffbot_dql",
+      "diffbot_dql_probe",
+      "diffbot_dql_ontology",
+      "diffbot_search_news",
+      "diffbot_search_organizations",
+      "diffbot_search_people",
+      "diffbot_search_places",
+      "diffbot_search_deals"
+    ]
+  }
+}

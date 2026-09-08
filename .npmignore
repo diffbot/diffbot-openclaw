@@ -1,0 +1,6 @@
+src/
+node_modules/
+*.tgz
+tsconfig.json
+vitest.config.ts
+.github/
